@@ -1,0 +1,16 @@
+# Archivos de estado de Terraform (Contienen info sensible)
+*.tfstate
+*.tfstate.*
+
+# Carpeta de plugins y binarios
+.terraform/
+
+# Archivo de bloqueo de versiones
+.terraform.lock.hcl
+
+# Archivos de variables sensibles
+*.tfvars
+*.tfvars.json
+
+# Archivos temporales de log
+*.log
