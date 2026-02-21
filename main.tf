@@ -1,8 +1,24 @@
-resource "local_file" "post_linkedin" {
-  content  = "Proyecto de IaC listo. Analizando Terraform vs OpenTofu vs Pulumi."
-  filename = "${path.module}/resultado.txt"
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
 }
 
-output "mensaje_exito" {
-  value = "¡Archivo creado con éxito! Ya puedes sacar la captura para tu post."
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "rg_seguridad" {
+  name     = "rg-laboratorio-manuel"
+  location = "West Europe"
+}
+
+resource "azurerm_virtual_network" "vnet_lab" {
+  name                = "vnet-seguridad"
+  address_space       = ["10.0.0.0/16"]
+  location            = azurerm_resource_group.rg_seguridad.location
+  resource_group_name = azurerm_resource_group.rg_seguridad.name
 }

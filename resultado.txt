@@ -1,1 +1,0 @@
-Proyecto de IaC listo. Analizando Terraform vs OpenTofu vs Pulumi.
